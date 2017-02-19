@@ -1,0 +1,674 @@
+!-----------------------------
+&Equations
+!-----------------------------
+
+Anisotropy = 0
+
+Anelasticity = 0
+
+Plasticity = 0
+
+! WARNING: Default value not found
+PlasticCo = 0.0
+
+! WARNING: Default value not found
+BulkFriction = 0.0
+
+! WARNING: Default value not found
+Tv = 0.0
+
+pmethod = 2
+
+Adjoint = 0
+
+MaterialType = 0
+
+! WARNING: Default value not found
+rho = 0.0
+
+! WARNING: Default value not found
+mu = 0.0
+
+! WARNING: Default value not found
+lambda = 0.0
+
+! Max length: 600
+! WARNING: Default value not found
+MaterialFileName = ''
+
+nMechanisms = 0
+
+! WARNING: Default value not found
+FreqCentral = 0.0
+
+! WARNING: Default value not found
+FreqRatio = 0.0
+
+RandomField_Flag = 0
+
+! Max length: 600
+! WARNING: Default value not found
+AdjFileName = ''
+/
+
+!-----------------------------
+&RFFile
+!-----------------------------
+
+! Max length: 600
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+RF_Files = ''
+/
+
+!-----------------------------
+&IniCondition
+!-----------------------------
+
+! Max length: 600
+cICType = 'Gauss_Puls_Rad'
+
+variable = 1
+
+xc = 0.0 0.0 0.0
+
+amplitude = 0.0
+
+! WARNING: Default value not found
+hwidth = 0.0 0.0 0.0
+
+! Max length: 600
+! WARNING: Default value not found
+IniConditionFile = ''
+
+! WARNING: Default value not found
+nZones = 0
+/
+
+!-----------------------------
+&Pickpoint
+!-----------------------------
+
+printtimeinterval = 1
+
+OutputMask = 1 1 1 0 0
+
+! WARNING: Default value not found
+nOutPoints = 0
+
+! Max length: 600
+! WARNING: Default value not found
+PPFileName = ''
+/
+
+!-----------------------------
+&Elementwise
+!-----------------------------
+
+printtimeinterval = 2
+
+OutputMask = 1 1 1 1 1 1 1 1 1 1 1
+
+refinement_strategy = 2
+
+refinement = 2
+
+printIntervalCriterion = 1
+
+! WARNING: Default value not found
+printtimeinterval_sec = 0.0
+/
+
+!-----------------------------
+&Boundaries
+!-----------------------------
+
+BC_fs = 0
+
+BC_nc = 0
+
+BC_dr = 0
+
+BC_if = 0
+
+BC_of = 0
+
+BC_pe = 0
+/
+
+!-----------------------------
+&DynamicRupture
+!-----------------------------
+
+FL = 0
+
+BackgroundType = 0
+
+Bulk_xx_0 = 0.0
+
+Bulk_yy_0 = 0.0
+
+Bulk_zz_0 = 0.0
+
+ShearXY_0 = 0.0
+
+ShearYZ_0 = 0.0
+
+ShearXZ_0 = 0.0
+
+RS_sv0 = 0.0
+
+XRef = 0.0
+
+YRef = 0.0
+
+ZRef = 0.0
+
+! Max length: 600
+! WARNING: Default value not found
+FileName_BackgroundStress = ''
+
+GPwise = 1.0
+
+inst_healing = 0
+
+Rupspeed = 0.0
+
+Mu_D_ini = 1.0
+
+Mu_S_ini = 1.0
+
+Mu_SNuc_ini = 1.0
+
+H_Length = 0.0
+
+D_C_ini = 1.0
+
+RS_f0 = 0.0
+
+RS_sr0 = 0.0
+
+RS_a = 0.0
+
+RS_b = 0.0
+
+RS_sl0 = 0.0
+
+RS_iniSlipRate1 = 0.0
+
+RS_iniSlipRate2 = 0.0
+
+v_star = 0.0
+
+L = 0.0
+
+! WARNING: Default value not found
+XHypo = 0.0
+
+! WARNING: Default value not found
+YHypo = 0.0
+
+! WARNING: Default value not found
+ZHypo = 0.0
+
+R_crit = 0.0
+
+t_0 = 0.0
+
+Vs_nucl = 0.0
+
+Mu_W = 0.0
+
+RS_srW = 0.0
+
+Nucleation = 0
+
+NucDirX = 0.0
+
+NucXmin = 0.0
+
+NucXmax = 0.0
+
+NucDirY = 0.0
+
+NucYmin = 0.0
+
+NucYmax = 0.0
+
+NucBulk_xx_0 = 0.0
+
+NucBulk_yy_0 = 0.0
+
+NucBulk_zz_0 = 0.0
+
+NucShearXY_0 = 0.0
+
+NucShearYZ_0 = 0.0
+
+NucShearXZ_0 = 0.0
+
+NucRS_sv0 = 0.0
+
+r_s = 0.0
+
+RF_output_on = 0
+
+DS_output_on = 0
+
+OutputPointType = 3
+
+magnitude_output_on = 0
+
+energy_rate_output_on = 0
+
+energy_rate_printtimeinterval = 1.0
+
+cohesion_0 = 0.0
+
+cohesion_max = 0.0
+
+cohesion_depth = 0.0
+
+read_fault_file = 0
+/
+
+!-----------------------------
+&InflowBound
+!-----------------------------
+
+! WARNING: Default value not found
+setvar = 0
+
+! Max length: 600
+! WARNING: Default value not found
+char_option = ''
+
+! Max length: 600
+! WARNING: Default value not found
+PWFileName = ''
+/
+
+!-----------------------------
+&InflowBoundPWFile
+!-----------------------------
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+varfield = 0.0
+/
+
+!-----------------------------
+&InflowBounduin
+!-----------------------------
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+u0_in = 0.0
+/
+
+!-----------------------------
+&SourceType
+!-----------------------------
+
+Type = 0
+
+! WARNING: Default value not found
+Rtype = 0
+
+! WARNING: Default value not found
+nDirac = 0
+
+! WARNING: Default value not found
+nPulseSource = 0
+
+! Max length: 600
+! WARNING: Default value not found
+FileName = ''
+
+! WARNING: Default value not found
+nRicker = 0
+/
+
+!-----------------------------
+&Source110
+!-----------------------------
+
+! WARNING: Default value not found
+U0 = 0.0 0.0 0.0
+
+! WARNING: Default value not found
+l1 = 0.0 0.0 0.0
+/
+
+!-----------------------------
+&Source15
+!-----------------------------
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+SpacePositionx = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+SpacePositiony = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+SpacePositionz = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+TimePosition = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+Intensity = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+EqnNr = 0.0
+/
+
+!-----------------------------
+&Source1618
+!-----------------------------
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+SpacePositionx = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+SpacePositiony = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+SpacePositionz = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+Delay = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+a1 = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+f = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+EqnNr = 0.0
+/
+
+!-----------------------------
+&Source17
+!-----------------------------
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+U0 = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+l1 = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+l2 = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+T = 0.0
+/
+
+!-----------------------------
+&Source19
+!-----------------------------
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+SpacePositionx = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+SpacePositiony = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+SpacePositionz = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+t0 = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+Width = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+A0 = 0.0
+/
+
+!-----------------------------
+&SpongeLayer
+!-----------------------------
+
+enabled = 0
+
+! WARNING: Default value not found
+DGSpongeTol = 0.0
+
+! WARNING: Default value not found
+nDGSponge = 0
+
+! WARNING: Default value not found
+intDummy = 0
+
+! WARNING: Default value not found
+PMLDelta = 0.0
+
+! WARNING: Default value not found
+Refl_Coeff = 0.0
+
+! WARNING: Default value not found
+PMLPrefactor = 0.0
+
+! WARNING: Default value not found
+PMLFrequency = 0.0
+/
+
+!-----------------------------
+&Sponges
+!-----------------------------
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+SpongeDelta = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+SpongePower = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+SigmaMax = 0.0
+/
+
+!-----------------------------
+&MeshNml
+!-----------------------------
+
+! Max length: 600
+MeshFile = 'LOH1'
+
+! Max length: 600
+meshgenerator = 'Gambit3D'
+
+periodic = 0
+
+periodic_direction = 0.0 0.0 0.0
+
+! WARNING: Default value not found
+displacement = 0.0 0.0 0.0
+
+ScalingMatrixX = 0.0 0.0 0.0
+
+ScalingMatrixY = 0.0 0.0 0.0
+
+ScalingMatrixZ = 0.0 0.0 0.0
+/
+
+!-----------------------------
+&Discretization
+!-----------------------------
+
+DGFineOut1D = 0
+
+DGMethod = 1
+
+ClusteredLTS = 1
+
+CKMethod = 0
+
+FluxMethod = 0
+
+! WARNING: Default value not found
+IterationCriterion = 0
+
+! WARNING: Default value not found
+nPoly = 0
+
+! WARNING: Default value not found
+nPolyRec = 0
+
+! WARNING: Default value not found
+LimiterSecurityFactor = 0
+
+! WARNING: Default value not found
+Order = 0
+
+Material = 1
+
+nPolyMap = 0
+
+CFL = 0.0
+
+FixTimeStep = 5000.0
+/
+
+!-----------------------------
+&Output
+!-----------------------------
+
+! Max length: 600
+OutputFile = 'data'
+
+Rotation = 0
+
+! WARNING: Default value not found
+iOutputMask = 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+iOutputMaskMaterial = 0 0 0
+
+Format = 1
+
+! WARNING: Default value not found
+Interval = 0.0
+
+! WARNING: Default value not found
+TimeInterval = 0.0
+
+! WARNING: Default value not found
+printIntervalCriterion = 0
+
+Refinement = 0
+
+pickdt = 0.0
+
+pickDtType = 1
+
+! Max length: 600
+! WARNING: Default value not found
+RFileName = ''
+
+PGMFlag = 0
+
+! Max length: 600
+! WARNING: Default value not found
+PGMFile = ''
+
+FaultOutputFlag = 0
+
+nRecordPoints = 0
+
+checkPointInterval = 0.0
+
+! Max length: 600
+! WARNING: Default value not found
+checkPointFile = ''
+
+! Max length: 64
+checkPointBackend = 'none'
+
+energy_output_on = 0
+
+pickdt_energy = 1.0
+
+OutputRegionBounds = 0.0 0.0 0.0 0.0 0.0 0.0
+
+IntegrationMask = 0 0 0 0 0 0 0 0 0
+/
+
+!-----------------------------
+&AbortCriteria
+!-----------------------------
+
+EndTime = 15.0
+
+MaxIteration = 10000000
+
+! WARNING: Default value not found
+MaxTolerance = 0.0
+
+MaxTolCriterion = 0.0
+
+! WARNING: Default value not found
+WallTime_h = 0.0
+
+! WARNING: Default value not found
+Delay_h = 0.0
+/
+
+!-----------------------------
+&Analysis
+!-----------------------------
+
+typ = 0
+
+! WARNING: Default value not found
+setvar = 0
+
+! WARNING: Default value not found
+variables = 0 0 0 0 0 0 0 0 0
+/
+
+!-----------------------------
+&AnalysisFields
+!-----------------------------
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+varfield = 0.0
+
+! WARNING: Dimension set at runtime
+! WARNING: Default value not found
+ampfield = 0.0
+
+! Max length: 600
+! WARNING: Default value not found
+EigenVecValName = ''
+/
+
