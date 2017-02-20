@@ -164,6 +164,8 @@ YRef = 0.0
 
 ZRef = 0.0
 
+refPointMethod = 0
+
 ! Max length: 600
 ! WARNING: Default value not found
 FileName_BackgroundStress = ''
