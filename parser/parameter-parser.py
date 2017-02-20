@@ -59,6 +59,9 @@ def generateParameterFile(filename, namelists):
 			
 			define = parameter.define()
 			type = define.type()
+			
+			if define.annotation():
+				f.write('%s\n' % define.annotation().format())
 
 			if type.type() == 'character' and type.hasLength():
 				f.write('! Max length: %d\n' % type.length)

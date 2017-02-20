@@ -610,6 +610,19 @@ checkPointInterval = 0.0
 ! WARNING: Default value not found
 checkPointFile = ''
 
+! The checkpoint back-end is specified via a string.
+! 
+! If none is specified, checkpoints are disabled. To use the HDF5, MPI-
+! IO or SIONlib back-ends you need to compile SeisSol with HDF5, MPI or
+! SIONlib respectively.
+! 
+! 
+! allowed_values: 'posix', 'hdf5', 'mpio', 'mpio_async', 'sionlib',
+! 'none'
+! warning: When using an asynchronous back-end (mpio_async), you might
+! lose 2 * checkPointInterval of your computation.
+! more_info: https://github.com/SeisSol/SeisSol/wiki/Parameter-File
+! 
 ! Max length: 64
 checkPointBackend = 'none'
 

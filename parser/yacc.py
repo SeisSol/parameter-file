@@ -42,10 +42,22 @@ import sys
 
 import ply.yacc as yacc
 
-from namelist import Namelist, Parameter, Define, Type
+from namelist import Namelist, Parameter, Define, Type, Annotation
 
 class ParseError(Exception):
 	pass
+
+class EmptyStatement:
+	pass
+
+class AnnotationContinue:
+	'''Continues an annotation (marked with !!)'''
+	
+	def __init__(self, annotation):
+		self.__annotation = annotation
+		
+	def annotation(self):
+		return self.__annotation
 	
 class Defines(dict):
 	pass
@@ -108,25 +120,45 @@ class FortranYacc:
 			assigns = Assigns()
 			namelists = []
 			
+			lastAnnotation = None
+			annotationContinue = False
+			
 			for line in p[7]:
-				if not line:
-					continue
-				
-				if type(line) is Defines:
-					if namelists:
-						ParseError("Found define after namelist in '%s'" % p[2])
-					if assigns:
-						ParseError("Found define after assigns in '%s'" % p[2])
-					defines.update(line)
-				elif type(line) is Namelist:
-					if assigns:
-						ParseError("Found namelist after assigns in '%s'" % p[2])
-					namelists.append(line)
-				elif type(line) is Assigns:
-					for id, value in line.items():
-						if not id in assigns:
-							assigns[id] = []
+				if type(line) is Annotation:
+					lastAnnotation = line
+					annotationContinue = True
+				elif type(line) is AnnotationContinue:
+					if not annotationContinue:
+						print("WARNING: Found annotation '!!' without annotation start", file=sys.stderr)
+					else:
+						lastAnnotation.append(line.annotation())
+				else:
+					# No annotation -> do not continue any annotations
+					annotationContinue = False
+					
+					if type(line) is Defines:
+						if namelists:
+							ParseError("Found define after namelist in '%s'" % p[2])
+						if assigns:
+							ParseError("Found define after assigns in '%s'" % p[2])
+							
+						if lastAnnotation:
+							for _,define in line.items():
+								define.setAnnotation(lastAnnotation)
+						defines.update(line)
+					elif type(line) is Namelist:
+						if assigns:
+							ParseError("Found namelist after assigns in '%s'" % p[2])
+						namelists.append(line)
+					elif type(line) is Assigns:
+						for id, value in line.items():
+							if not id in assigns:
+								assigns[id] = []
 						assigns[id].extend(value)
+					
+					if not type(line) is EmptyStatement:
+						# Last statement was not an annotation or an empty statement
+						lastAnnotation = None
 					
 			for namelist in namelists:
 				for parameter in namelist.parameters():
@@ -183,6 +215,10 @@ class FortranYacc:
 			'subroutine_statement : error'
 			self.__testForImportantToken(p[1])
 			#print('subroutine error', p[1])
+			
+		def p_subroutine_statement_empty(p):
+			'subroutine_statement :'
+			p[0] = EmptyStatement()
 			
 		def p_subroutine_statement_definition(p):
 			'subroutine_statement : type_definition DEFINE define_variables'
@@ -299,6 +335,32 @@ class FortranYacc:
 		#def p_subroutine_statement_select(p):
 			#'''subroutine_statement : SELECT CASE BRACKET error BRACKET subroutine_lines ENDSELECT
 				#| SELECT CASE BRACKET error BRACKET subroutine_lines END SELECT'''
+				
+		def p_subroutine_statement_annotation_start(p):
+			'subroutine_statement : ANNO_START annotation'
+			p[0] = p[2]
+		
+		def p_subroutine_statement_annotation_continue(p):
+			'subroutine_statement : ANNO_CONTINUE annotation'
+			p[0] = AnnotationContinue(p[2])
+			
+		def p_annotation_empty(p):
+			'annotation :'
+			p[0] = Annotation('\n\n')
+			
+		def p_annotation_text(p):
+			'annotation : ANNO_TEXT'
+			p[0] = Annotation(p[1])
+			
+		def p_annotation_special(p):
+			'annotation : annotation_keyword ANNO_TEXT'
+			p[0] = Annotation('\n' + p[1] + ': ' + p[2])
+			
+		def p_annotation_keyword(p):
+			'''annotation_keyword : ANNO_ALLOWED_VALUES
+				| ANNO_WARNING
+				| ANNO_MORE_INFO'''
+			p[0] = p[1]
 
 		def p_error(p):
 			if not p:

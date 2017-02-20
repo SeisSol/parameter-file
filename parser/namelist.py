@@ -39,6 +39,9 @@
 #
 
 import copy
+import itertools
+import re
+import textwrap
 
 class Type:
 	def __init__(self, type):
@@ -58,8 +61,27 @@ class Type:
 			return self.__type + '(len=' + str(self.length) + ')'
 		return self.__type
 
+class Annotation:
+	def __init__(self, text):
+		self.__text = text
+		
+	def append(self, annotation):
+		if annotation.__text:
+			self.__text += ' ' + annotation.__text
+		
+	def format(self):
+		wrapper = textwrap.TextWrapper()
+		def noEmptyList(l):
+			if not l:
+				return ['']
+			return l
+		
+		text_lines = map(lambda s: noEmptyList(wrapper.wrap(s.strip())), self.__text.splitlines())
+		return '! ' + '\n! '.join(itertools.chain.from_iterable(text_lines))
+
 class Define:
 	__size = 1
+	__annotation = None
 	
 	def __init__(self, type):
 		self.__type = copy.deepcopy(type)
@@ -72,6 +94,12 @@ class Define:
 	
 	def type(self):
 		return self.__type
+	
+	def setAnnotation(self, annotation):
+		self.__annotation = annotation
+		
+	def annotation(self):
+		return self.__annotation
 
 class Parameter:
 	__valueList = None
